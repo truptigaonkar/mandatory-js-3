@@ -1,3 +1,4 @@
+let mainBreedList = document.querySelector('#mainBreedList');
 // Getting list of all dog breeds
 function getBreeds(){
     let xml = new XMLHttpRequest
@@ -24,3 +25,36 @@ function renderText(getBreedsParseData){
     }
 }
 ////--------End of list of all dog breeds-----------------------------------////
+
+//Getting the random image
+function getRandomImages(){
+    let xml = new XMLHttpRequest
+    xml.open("GET", "https://dog.ceo/api/breeds/image/random");
+    xml.addEventListener("load", getRandomImagesParse);
+    xml.send();
+    let getBtn = document.querySelector('#getBtn');
+    getBtn.addEventListener('click', getRandomImages);
+}
+getRandomImages(); // Declare function
+
+//Parsing json data from 'https://dog.ceo/api/breeds/image/random'
+function getRandomImagesParse(){
+    let parseData = JSON.parse(this.responseText);
+    console.log(parseData);
+    renderImg(parseData.message);
+}
+
+//Rendering images on webpage
+function renderImg(imgData){
+    for (let key in imgData){
+        let checkImg = document.querySelector("img");
+        if (checkImg){
+            mainBreedList.removeChild(checkImg);
+        }
+        let img = document.createElement("img");
+        img.setAttribute("src", imgData);
+        mainBreedList.appendChild(img);
+    }
+}
+////--------End of listing random images-----------------------------------////
+
