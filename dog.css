@@ -1,0 +1,73 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url("dog_background.jpg");
+    font-family: 'Lobster', cursive;
+}
+ul{
+    display: flex;   
+    flex-wrap: wrap;
+    /* background-color: lightslategray; */
+    margin-top: 0;
+}
+li{
+    margin: 3px;
+    list-style-type: none;
+    border-bottom: 1px solid rgb(221,221,221);
+    padding: 3px;
+    background-color: lightcoral ;
+}
+img{
+    width: auto;
+    height: 300px;
+    text-align: center;
+}
+
+header{
+    background-color: blueviolet;
+    padding: 1.5%;
+    text-align: center;
+    font-size: 50px;
+}
+footer{
+    margin-top: 5px;
+    background-color: blueviolet;
+    padding: 1%;
+    text-align: center;
+}
+button {
+    position: relative;
+    background-color:#f4511e;
+    border: none;
+    font-size: 28px;
+    color: #FFFFFF;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 12px;
+    font-family: 'Lobster', cursive;
+  }
+  button:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+  }
+  
+  button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+  }
