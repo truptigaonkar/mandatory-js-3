@@ -3,10 +3,10 @@ let parsedData;
 
 ////================Getting list of all dog breeds==================////
 function getBreeds() {
-    let req = new XMLHttpRequest
-    req.open("GET", "https://dog.ceo/api/breeds/list/all");
-    req.addEventListener("load", parse);
-    req.send();
+    let xml = new XMLHttpRequest
+    xml.open("GET", "https://dog.ceo/api/breeds/list/all");
+    xml.addEventListener("load", parse);
+    xml.send();
 }
 getBreeds();
 
@@ -52,10 +52,10 @@ function getBreed(e, parsedData){
 
 ////================Getting the random image==================////
 function getRandomImages() {
-    let req = new XMLHttpRequest
-    req.open("GET", "https://dog.ceo/api/breeds/image/random");
-    req.addEventListener("load", parseImage);
-    req.send();
+    let xml = new XMLHttpRequest
+    xml.open("GET", "https://dog.ceo/api/breeds/image/random");
+    xml.addEventListener("load", parseImage);
+    xml.send();
     let newImageBtn = document.querySelector("#newImageBtn");
     newImageBtn.addEventListener("click", getRandomImages);
 }
@@ -66,10 +66,10 @@ function getBreedImages(e){
     let dog = e.target.textContent;
     window.location.hash = "#" + dog;
     console.log(dog);
-    let req = new XMLHttpRequest
-    req.open("GET", "https://dog.ceo/api/breed/"+ dog +"/images/random");
-    req.addEventListener("load", parseImage);
-    req.send();
+    let xml = new XMLHttpRequest
+    xml.open("GET", "https://dog.ceo/api/breed/"+ dog +"/images/random");
+    xml.addEventListener("load", parseImage);
+    xml.send();
 
     let button = document.querySelector("#newImageBtn");
     button.removeEventListener("click", getRandomImages); 
@@ -143,10 +143,10 @@ function getSubBreed(e) {
 
 ////================Getting sub breed image ==================////
 function getSubBreedImg() {
-    let req = new XMLHttpRequest
-    req.open("GET", "https://dog.ceo/api/breed/" + breed + "/images/random");
-    req.addEventListener("load", parseImage);
-    req.send();
+    let xml = new XMLHttpRequest
+    xml.open("GET", "https://dog.ceo/api/breed/" + breed + "/images/random");
+    xml.addEventListener("load", parseImage);
+    xml.send();
 }
 ////================End of getting sub breed image ==================////
 
