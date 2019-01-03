@@ -14,7 +14,7 @@ getBreeds();
 function parse() {
     parsedData = JSON.parse(this.responseText);
     console.log(parsedData.message);
-    getText(parsedData.message);
+    getText(parsedData);
 }
 
 //Rendering HTML content in to list
@@ -51,15 +51,34 @@ function getBreed(e, parsedData){
 ////================End of getting list of all dog breeds==================////
 
 ////================Getting the random image==================////
+
+function locationHash (){
+    let hash; 
+    if(window.location.hash) { 
+        let dogBreed = window.location.hash.substring(1); 
+        hash = "https://dog.ceo/api/breed/"+ dogBreed +"/images/random"; 
+    } else { 
+        hash = "https://dog.ceo/api/breeds/image/random";
+    }
+    return hash;
+}
+
 function getRandomImages() {
     let xml = new XMLHttpRequest
-    xml.open("GET", "https://dog.ceo/api/breeds/image/random");
+    xml.open("GET", locationHash());
+    //xml.open('GET', 'https://dog.ceo/api/breeds/image/random');
     xml.addEventListener("load", parseImage);
     xml.send();
+    
     let newImageBtn = document.querySelector("#newImageBtn");
     newImageBtn.addEventListener("click", getRandomImages);
+    //newImageBtn.addEventListener("click", refresh);
 }
 getRandomImages();
+
+// function refresh() {
+//     location.reload();
+// }
 
 // Getting images respective to breed
 function getBreedImages(e){
@@ -67,6 +86,7 @@ function getBreedImages(e){
     window.location.hash = "#" + dog;
     console.log(dog);
     let xml = new XMLHttpRequest
+    //xml.open("GET", locationHash());
     xml.open("GET", "https://dog.ceo/api/breed/"+ dog +"/images/random");
     xml.addEventListener("load", parseImage);
     xml.send();
@@ -85,7 +105,6 @@ function parseImage() {
     console.log(parsedImg.message)
     img.setAttribute("src", parsedImg.message);
     randomImageDisplay.appendChild(img);
-
     let text = JSON.stringify(parsedImg.message);
     breedNameDisplay(text);
 }
@@ -132,13 +151,10 @@ function getSubBreed(e) {
     let newImageBtn = document.querySelector("#newImageBtn");
     newImageBtn.removeEventListener("click", getRandomImages);
     newImageBtn.addEventListener("click", getSubBreedImg);
-    let backBtn = document.createElement('button');
-    backBtn.textContent = "Back to Home";
-    backBtn.setAttribute('style','background-color:red');
-    backBtn.addEventListener("click", returnTostart);
-    main.appendChild(backBtn);
+
     getSubBreedImg();
 }
+
 ////================End of getting sub breed data respective to breed ==================////
 
 ////================Getting sub breed image ==================////
@@ -149,6 +165,8 @@ function getSubBreedImg() {
     xml.send();
 }
 ////================End of getting sub breed image ==================////
+
+
 
 
 
