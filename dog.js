@@ -52,10 +52,11 @@ function getBreed(e, parsedData){
 
 ////================Getting the random image==================////
 
-function locationHash (){
-    let hash; 
+function locationHash (hash){
+    //let hash; 
     if(window.location.hash) { 
         let dogBreed = window.location.hash.substring(1); 
+        console.log(dogBreed);
         hash = "https://dog.ceo/api/breed/"+ dogBreed +"/images/random"; 
     } else { 
         hash = "https://dog.ceo/api/breeds/image/random";
@@ -83,17 +84,16 @@ getRandomImages();
 // Getting images respective to breed
 function getBreedImages(e){
     let dog = e.target.textContent;
-    window.location.hash = "#" + dog;
     console.log(dog);
+    window.location.hash = "#" + dog;
     let xml = new XMLHttpRequest
-    //xml.open("GET", locationHash());
-    xml.open("GET", "https://dog.ceo/api/breed/"+ dog +"/images/random");
+    xml.open("GET", locationHash());
+    //xml.open("GET", "https://dog.ceo/api/breed/"+ dog +"/images/random");
     xml.addEventListener("load", parseImage);
     xml.send();
 
     let button = document.querySelector("#newImageBtn");
-    button.removeEventListener("click", getRandomImages); 
-    button.addEventListener("click", getBreedImages);
+    button.addEventListener("click", getRandomImages);
 }
 
 //Parsing json data from 'https://dog.ceo/api/breeds/image/random'
