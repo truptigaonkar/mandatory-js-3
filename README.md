@@ -1,4 +1,4 @@
-# Mandatory Exercise 3 - JavaScript
+# JavaScript Dog API - JavaScript
 
 ## Instructions
 
