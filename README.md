@@ -1,4 +1,5 @@
 ## JavaScript Dog API - JavaScript - [Live Demo]( https://truptigaonkar.github.io/mandatory-js-3/)
+![mandatory-js-3](https://user-images.githubusercontent.com/14937374/79688507-0704be00-824f-11ea-9da3-7c1f7092d8f9.gif)
 ### Instructions
 * Single-page application (SPA). There should only exist a single html file in the project.
 * Build an application for viewing images of dogs by making requests to the Dog API (https://dog.ceo/dog-api/documentation/).
