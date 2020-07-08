@@ -4,7 +4,7 @@ let parsedData;
 ////================Getting list of all dog breeds==================////
 function getBreeds() {
     let xml = new XMLHttpRequest
-    xml.open("GET", "4");
+    xml.open("GET", "https://dog.ceo/api/breeds/list/all");
     xml.addEventListener("load", parse);
     xml.send();
 }
