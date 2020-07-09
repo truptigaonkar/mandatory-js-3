@@ -3,13 +3,13 @@ import axios from 'axios'
 import Doglist from './Doglist'
 
 const Home = () => {
-    const [dogs, setDogs] = useState([])
+    const [dogs, setDogs] = useState({})
     const [load, setLoad] = useState(false)
     const [error, setError] = useState(false)
 
     useEffect(() => {
         axios
-            .get(`https://dog.ceo/api/breeds/list`)
+            .get(`https://dog.ceo/api/breeds/list/all`)
             .then((res) => {
                 setDogs(res.data.message);
                 console.log(res.data.message);
