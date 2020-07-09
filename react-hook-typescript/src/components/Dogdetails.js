@@ -20,12 +20,25 @@ const Dogdetails = () => {
             });
     }, [id]);
 
+    const handleRefresh = () =>{
+        axios.get(`https://dog.ceo/api/breed/${id}/images/random`)
+            .then(res => {
+                console.log(res.data.message)
+                setDog(res.data.message)
+            })
+            .catch((err) => {
+                setError(err.message);
+                setLoad(true);
+            });
+    }
+
     return (
         <div>
             {load && <div>loading.....</div>}
             <p>Dog details :  <b>{id}</b></p> 
             {error && <div>Something went wrong - <b>{error}</b></div>}
             <p>{<img src={dog} alt="dog"/>}</p>
+            <button onClick={handleRefresh}>Refresh</button>
         </div>
     )
 }
