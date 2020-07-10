@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const Doglist = (props) => {
+const Doglist = (props:any) => {
     const {dogs} = props
     return (
         <>
