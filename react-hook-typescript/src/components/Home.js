@@ -4,6 +4,7 @@ import Doglist from './Doglist'
 
 const Home = () => {
     const [dogs, setDogs] = useState({})
+    const [subdogs, setSubdogs] = useState([])
     const [load, setLoad] = useState(false)
     const [error, setError] = useState(false)
 
@@ -12,6 +13,7 @@ const Home = () => {
             .get(`https://dog.ceo/api/breeds/list/all`)
             .then((res) => {
                 setDogs(res.data.message);
+                setSubdogs(res.data.message)
                 console.log(res.data.message);
                 setLoad(true);
             })
@@ -25,7 +27,7 @@ const Home = () => {
         <>
             {!load && <div>loading.....</div>}
             <p style={{color:'red'}}>{error && <div>LIST: Something went wrong - <b>{error}</b></div>}</p>
-            <Doglist dogs={dogs}/>
+            <Doglist dogs={dogs} subdogs={subdogs}/>
         </>
     )
 }
